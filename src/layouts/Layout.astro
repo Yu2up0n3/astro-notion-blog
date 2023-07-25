@@ -209,17 +209,6 @@ if (database.Icon && database.Icon.Type === 'file') {
       padding: 0 18px;
     }
   }
-  div.content > div {
-    padding: 2rem 2.5rem 1rem 2.5rem;
-  }
-  div.content > div > div {
-    border-radius: 1.4rem 1.4rem 1.4rem 1.4rem;
-    padding: 2rem 1rem 2rem 1.6rem;
-    background-color: #F4F5F7;
-    outline: dashed 5px #F4F5F7;
-    outline-offset: 2.3rem;
-    margin-bottom: 7.4em;
-  }
 
   main header {
     padding: 20px 0 20px;
@@ -262,13 +251,15 @@ if (database.Icon && database.Icon.Type === 'file') {
   }
 
   main footer {
-    margin: 30px 0 10px;
     text-align: center;
     font-size: 0.75rem;
+    margin-bottom: auto;
+    padding: 2.6rem 0 2.2rem 0;
   }
   @media (max-width: 640px) {
     main footer {
-      margin: 0 auto 30px;
+      margin-bottom: auto;
+      padding: 0 0 3.2rem 0;
     }
   }
   main footer span {
