@@ -153,7 +153,7 @@ if (database.Icon && database.Icon.Type === 'file') {
 
   .container > div {
     display: flex;
-    max-width: 1280px;
+    max-width: 2048px;
   }
   @media (max-width: 640px) {
     .container > div {
@@ -165,6 +165,7 @@ if (database.Icon && database.Icon.Type === 'file') {
     flex: 1;
     order: 2;
     justify-content: space-between;
+    background-color: #C1272D;
   }
   @media (max-width: 640px) {
     main {
@@ -176,7 +177,12 @@ if (database.Icon && database.Icon.Type === 'file') {
     order: 1;
     width: 300px;
     padding: 20px 20px;
-    background-color: #f4f4f4;
+    background:
+      linear-gradient(to bottom, transparent 10%, transparent 80%, #F4F5F7 100%),
+      url(../../images/bk_check_02.png);
+    background-size: 343px;
+    background-color: rgba(255,255,255,0.9);
+    background-blend-mode: lighten;
   }
   @media (max-width: 640px) {
     aside {
@@ -203,13 +209,24 @@ if (database.Icon && database.Icon.Type === 'file') {
       padding: 0 18px;
     }
   }
+  div.content > div {
+    padding: 2rem 2.5rem 1rem 2.5rem;
+  }
+  div.content > div > div {
+    border-radius: 1.4rem 1.4rem 1.4rem 1.4rem;
+    padding: 2rem 1rem 2rem 1.6rem;
+    background-color: #F4F5F7;
+    outline: dashed 5px #F4F5F7;
+    outline-offset: 2.3rem;
+    margin-bottom: 7.4em;
+  }
 
   main header {
     padding: 20px 0 20px;
   }
   main header h1 {
     font-weight: 700;
-    color: #333;
+    color: #F4F5F7;
   }
   main header h1 a {
     display: block;
@@ -241,6 +258,7 @@ if (database.Icon && database.Icon.Type === 'file') {
   main header div.description {
     padding: 0.3rem 0 0.6rem;
     font-size: 0.95rem;
+    color: #F9E6E6;
   }
 
   main footer {

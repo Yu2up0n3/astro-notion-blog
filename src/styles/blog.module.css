@@ -1,12 +1,14 @@
-/* Original */
+.main {
+  padding: 2rem 2.5rem 1rem 2.5rem;
+}
 
 .main header {
   padding: 0 0 20px;
 }
 .main footer {
-  border-top: 1px dashed #888;
+  border-top: 2px dashed #F4F5F7;
   margin: 0 auto;
-  padding: 40px 0 0;
+  padding: 3rem 0 0;
 }
 @media (max-width: 640px) {
   .main footer {
@@ -14,8 +16,14 @@
   }
 }
 
+
 .post {
-  margin: 0 auto 40px;
+  border-radius: 1.4rem 1.4rem 1.4rem 1.4rem;
+  padding: 2rem 1rem 2rem 1.6rem;
+  background-color: #F4F5F7;
+  outline: dashed 5px #F4F5F7;
+  outline-offset: 2.3rem;
+  margin-bottom: 7.4em;
 }
 .post :global(h3) {
   margin: 0;
