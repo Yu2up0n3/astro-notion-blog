@@ -1,5 +1,6 @@
 import fs, { createWriteStream } from 'node:fs'
 import axios, { AxiosResponse } from 'axios'
+import sharp from 'sharp'
 import retry from 'async-retry'
 import ExifTransformer from 'exif-be-gone'
 import {
@@ -402,7 +403,14 @@ export async function downloadFile(url: URL) {
   const filepath = `${dir}/${filename}`
 
   const writeStream = createWriteStream(filepath)
-  res.data.pipe(new ExifTransformer()).pipe(writeStream)
+  const rotate = sharp().rotate()
+
+  let stream = res.data
+
+  if (res.headers['content-type'] === 'image/jpeg') {
+    stream = stream.pipe(rotate)
+  }
+  stream.pipe(new ExifTransformer()).pipe(writeStream)
 }
 
 export async function getDatabase(): Promise<Database> {
@@ -639,21 +647,23 @@ function _buildBlock(blockObject: responses.BlockObject): Block {
     case 'callout':
       if (blockObject.callout) {
         let icon: FileObject | Emoji | null = null
-        if (
-          blockObject.callout.icon.type === 'emoji' &&
-          'emoji' in blockObject.callout.icon
-        ) {
-          icon = {
-            Type: blockObject.callout.icon.type,
-            Emoji: blockObject.callout.icon.emoji,
-          }
-        } else if (
-          blockObject.callout.icon.type === 'external' &&
-          'external' in blockObject.callout.icon
-        ) {
-          icon = {
-            Type: blockObject.callout.icon.type,
-            Url: blockObject.callout.icon.external?.url || '',
+        if (blockObject.callout.icon) {
+          if (
+            blockObject.callout.icon.type === 'emoji' &&
+            'emoji' in blockObject.callout.icon
+          ) {
+            icon = {
+              Type: blockObject.callout.icon.type,
+              Emoji: blockObject.callout.icon.emoji,
+            }
+          } else if (
+            blockObject.callout.icon.type === 'external' &&
+            'external' in blockObject.callout.icon
+          ) {
+            icon = {
+              Type: blockObject.callout.icon.type,
+              Url: blockObject.callout.icon.external?.url || '',
+            }
           }
         }
 
